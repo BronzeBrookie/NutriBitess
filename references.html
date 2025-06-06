@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriBites | References</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="Essentials/make the logo for Nutribite landscape.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A6B3D;   /* Forest green */
+            --secondary-color: #8BA888; /* Sage green */
+            --accent-color: #A3B86C;    /* Olive green */
+            --light-color: #F0F4E8;     /* Dewy light green */
+            --dark-color: #2C3E2A;      /* Deep pine green */
+            --text-dark: #333;          /* Dark text for light backgrounds */
+            --text-light: #fff;         /* Light text for dark backgrounds */
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--light-color);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--dark-color);
+            padding: 15px 20px;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--light-color) !important;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link {
+            color: var(--light-color);
+            margin-right: 15px;
+            position: relative;
+            font-weight: 500;
+            padding: 8px 0 !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 0%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--light-color);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-toggler {
+            border: none;
+            color: var(--light-color);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* Buttons */
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-accent:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+
+        .section-dark {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+        }
+
+        .section-light {
+            background-color: var(--light-color);
+        }
+
+        .section-accent {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+
+       /* Hero Section */
+        .hero-container {
+            background:
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url('https://www.naceweb.org/images/default-source/2017/feature/sample-faculty-reference-letter-xlarge.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        /*Reference List*/
+        .references-list {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--text-light);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            width: 20px;
+        }
+        
+        .social-icon {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">NutriBites</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="recipe.html">Recipes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutus.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="donate.html">Donate</a></li>
+                </ul>
+
+                <form class="d-flex">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Search recipes..." aria-label="Search">
+                        <button class="btn btn-accent" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-container" id="about">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">References & Citations</h1>
+                <p class="hero-subtitle">Websites we we took reference and utilized to create NutriBites. All are mentioned below.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-accent">
+        <div class="container">
+            <div class="row">
+                <div class="references-list col-lg-6 justify-content-center text-center align-items-center m-auto p-5">
+                    <h3 class="section-title">References Links</h3>
+                    <p>Bootstrap Framework:</p>
+                    <p>https://getbootstrap.com/</p>
+                    <p>W3 Schools:</p>
+                    <p>https://www.w3schools.com/</p>
+                    <p>Codepen.io:</p>
+                    <p>https://codepen.io/</p>
+                    <p>Font Awesome:</p>
+                    <p>https://fontawesome.com/</p>
+                    <p>Bootstrap Icons:<p>
+                    <p>https://icons.getbootstrap.com/</p>
+                    <p>Pinterest:</p>
+                    <p>https://www.pinterest.com/</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="section section-light">
+        <div class="container">
+            <div class="references-list col-lg-6 justify-content-center text-center align-items-center m-auto p-5">
+                <h3 class="section-title">Main Website We Took Reference From</h3>
+                <p>Ready Wise | Survial Food Website</p>
+                <p>https://readywise.com/</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="text-white mb-4">NutriBites</h3>
+                    <p>Providing nutritious, shelf-stable meal solutions to fight hunger and food insecurity worldwide.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="recipe.html">Recipes</a>
+                        <a href="aboutus.html">About Us</a>
+                        <a href="donate.html">Donate</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="text-white mb-4">Recipe Categories</h5>
+                    <div class="footer-links">
+                        <a href="#">Emergency Meals</a>
+                        <a href="#">No-Cook Recipes</a>
+                        <a href="#">Budget-Friendly</a>
+                        <a href="#">High-Protein</a>
+                        <a href="#">Child-Friendly</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="text-white mb-4">Contact Info</h5>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> No.113, Bobahtoo 9th St, Hlaingtharyar Tsp, Yangon</p>
+                        <p><i class="fas fa-phone"></i> +95-420105298</p>
+                        <p><i class="fas fa-envelope"></i> info@nutribites.org</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white">© 2023 NutriBites. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a class="mb-0 text-white text-decoration-none" href="references.html">References</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

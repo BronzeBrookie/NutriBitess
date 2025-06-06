@@ -1,0 +1,2351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover nutritious and easy-to-prepare recipes from NutriBites - perfect for emergency situations, budget-friendly meals, and more">
+    <title>NutriBites | Recipes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="Essentials/make the logo for Nutribite landscape.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A6B3D;   /* Forest green */
+            --secondary-color: #8BA888; /* Sage green */
+            --accent-color: #A3B86C;    /* Olive green */
+            --light-color: #F0F4E8;     /* Dewy light green */
+            --dark-color: #2C3E2A;      /* Deep pine green */
+            --text-color: #333333;
+            --text-light: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--dark-color);
+            padding: 15px 20px;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--light-color) !important;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link {
+            color: var(--light-color);
+            margin-right: 15px;
+            position: relative;
+            font-weight: 500;
+            padding: 8px 0 !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 0%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--light-color);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-toggler {
+            border: none;
+            color: var(--light-color);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* Hero Section */
+        .hero-container {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .section-light {
+            background-color: var(--light-color);
+        }
+
+        .section-accent {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+
+        /* Recipe Cards */
+        .recipe-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            margin: 0 15px;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .recipe-card-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .recipe-card-header h5 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .recipe-card-body {
+            padding: 20px;
+        }
+
+        .ingredients-list {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .ingredients-list h6 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .ingredients-list ul {
+            margin: 0;
+            padding-left: 15px;
+            font-size: 0.9rem;
+        }
+
+        .instructions {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .instructions h6 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .instructions p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Category Headers */
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .category-description {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Carousel Customization */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+            color: var(--dark-color);
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: var(--dark-color);
+            border-radius: 50%;
+            padding: 20px;
+        }
+
+        .carousel-indicators {
+            margin-bottom: -30px;
+        }
+
+        .carousel-indicators button {
+            background-color: var(--accent-color);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+
+        .btn-accent:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-accent {
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            background: transparent;
+        }
+
+        .btn-outline-accent:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--text-light);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            width: 20px;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 1.25rem;
+            margin-right: 15px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1199.98px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .category-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .hero-container {
+                min-height: 50vh;
+                padding: 100px 0;
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .recipe-card {
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .category-title {
+                font-size: 1.8rem;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .recipe-card {
+                margin: 0 5px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .category-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">NutriBites</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="recipes.html">Recipes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutus.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="donate.html">Donate</a></li>
+                </ul>
+
+                <form class="d-flex">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Search recipes..." aria-label="Search">
+                        <button class="btn btn-accent" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-container">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">NutriBites Recipes</h1>
+                <p class="hero-subtitle">Discover nutritious, easy-to-prepare recipes designed for any situation. From emergency meals to budget-friendly options, we've got you covered.</p>
+                <a href="#emergency-meals" class="btn btn-accent btn-lg">Start Cooking</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Meals Section -->
+    <section class="section section-accent" id="emergency-meals">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">Emergency Meals</h2>
+                <p class="category-description">Quick and nutritious meals that can be prepared in crisis situations with minimal resources.</p>
+            </div>
+            
+            <div id="emergencyCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#emergencyCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#emergencyCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#emergencyCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#emergencyCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#emergencyCarousel" data-bs-slide-to="4"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="https://thebananadiaries.com/wp-content/uploads/2020/03/simple-vegan-lentil-soup_9962-1333x2000.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Quick Pantry Lentil Stew</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 25 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 cup dried lentils</li>
+                                                <li>1 can (14 oz) diced tomatoes</li>
+                                                <li>1 tbsp dried onion flakes</li>
+                                                <li>1 tsp garlic powder</li>
+                                                <li>1 vegetable bouillon cube</li>
+                                                <li>Salt and black pepper to taste</li>
+                                                <li>4 cups water</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Rinse lentils and combine with 4 cups water in a pot; bring to a boil.
+
+Add tomatoes (with juices), onion flakes, garlic powder, and bouillon cube.
+
+Season with salt and pepper, reduce heat, and simmer 20 min until lentils are soft.
+
+Taste, adjust seasoning, and serve hot.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/red chilli blah blah.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Rapid Relief Chili</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 15 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) kidney beans, drained and rinsed</li>
+                                                <li>1 can (15 oz) black beans, drained and rinsed</li>
+                                                <li>1 can (8 oz) tomato sauce</li>
+                                                <li>1 tbsp chili seasoning</li>
+                                                <li>1 tsp dried oregano</li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Combine beans, tomato sauce, chili seasoning, and oregano in a pot.
+
+Stir to mix, bring to a boil over medium heat.
+
+Reduce heat and simmer 10 min, stirring occasionally.
+
+Season with salt and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="https://www.sargento.com/assets/Uploads/Recipe/Image/Untitled-1-v9__FocusFillWyIwLjAwIiwiMC4wMCIsMTEwMCw2NTdd.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Potato Bombs</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 10 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>4 medium potatoes</li>
+                                                <li>½ cup shredded cheese</li>
+                                                <li>4 tbsp canned beans or cooked veggies (optional)</li>
+                                                <li>½ tsp garlic powder</li>
+                                                <li>Salt and pepper to taste</li>
+                                                <li>1 tbsp oil or butter (optiona)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Cook rice per package instructions (usually 5 min).
+
+In a small pot, heat beans with onion powder, garlic powder, cumin, and a pinch of salt until warmed (2–3 min).
+
+Stir beans into cooked rice and heat together 1–2 min.
+
+Drizzle with oil if desired and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/swift tomato pasta.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Swift Tomato Pasta</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 15 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>8 oz pasta (any shape)</li>
+                                                <li>1 can (10 oz) tomato soup</li>
+                                                <li>1 tsp Italian seasoning</li>
+                                                <li>½ tsp garlic powder</li>
+                                                <li>Salt to taste</li>
+                                                <li>2 cups water (for cooking pasta)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Boil pasta in salted water per package (about 8 min); drain.
+
+In the same pot, heat tomato soup with Italian seasoning, garlic powder, and a pinch of salt until bubbling.
+
+Add cooked pasta, toss to coat, and heat 1–2 min.
+
+Serve immediately.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/tuna crackers.jpg" class="img-fluid" alt="Quick Pantry Lentil Stew" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Speedy Tuna Cracker Snack</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (5 oz) tuna, drained</li>
+                                                <li>8-10 crackers</li>
+                                                <li>2 tbsp canned cheese spread</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a bowl, mix drained tuna with cheese spread until combined.
+
+Spoon mixture onto crackers (about 1 tbsp each).
+
+Arrange on a plate and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/peanut butter wrap.jpg" class="img-fluid" alt="Quick Pantry Lentil Stew" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Emergency Peanut Butter Wrap</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 3 min</span>
+                                            <span><i class="fas fa-users"></i> 2 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 tortillas</li>
+                                                <li>4 tbsp peanut butter</li>
+                                                <li>2 tbsp honey</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Spread peanut butter on tortilla, drizzle honey, roll up.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/oatmeal mix.jpg" class="img-fluid" alt="Quick Pantry Lentil Stew" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Survival Oatmeal Mix</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 cups oats</li>
+                                                <li>1 cup powdered milk</li>
+                                                <li>Sugar</li>
+                                                <li>1 tsp cinnamon</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Divide mix evenly into 4 bowls.
+
+Add ½ cup hot water to each bowl, stir, and let sit 2 min.
+
+Fluff with a fork and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/veggie mix salad.jpg" class="img-fluid" alt="Quick Pantry Lentil Stew" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Quick Veggie Mix Salad</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) mixed vegetables, drained</li>
+                                                <li>2 tbsp olive oil</li>
+                                                <li>1 tbsp vinegar (any type)</li>
+                                                <li>Salt and pepper to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a bowl, combine drained veggies, oil, and vinegar.
+
+Season with salt and pepper, toss to mix.
+
+Serve chilled or at room temperature.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/instant potato and chicken mix.jpg" class="img-fluid" alt="Quick Pantry Lentil Stew" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Instant Potato & Chicken Mix</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 10 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 pack instant mashed potatoes</li>
+                                                <li>1 can (5 oz) chicken, drained</li>
+                                                <li>2 tbsp butter</li>
+                                                <li>Salt and pepper to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Prepare potatoes per package, adding butter.
+
+Stir in drained chicken, season with salt and pepper.
+
+Heat through 1–2 min and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/instant ramen.jpg" class="img-fluid" alt="Quick Pantry Lentil Stew" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Instant Veggie Ramen</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 10 min</span>
+                                            <span><i class="fas fa-users"></i> 4 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 packs instant ramen noodles (discard seasoning)</li>
+                                                <li>1 can (15 oz) mixed vegetables, drained</li>
+                                                <li>1 tsp garlic powder</li>
+                                                <li>½ tsp onion powder</li>
+                                                <li>4 cups water</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Bring 4 cups water to a boil in a pot.
+
+Add ramen noodles; cook 2 min.
+
+Stir in drained veggies, garlic powder and onion powder; simmer 2–3 min.
+
+Taste and adjust seasoning, then dish up.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#emergencyCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#emergencyCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- No-Cook Recipes Section -->
+    <section class="section section-dark" id="no-cook">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">No-Cook Recipes</h2>
+                <p class="category-description">Fresh and nutritious meals that require no cooking - perfect when kitchen facilities are limited.</p>
+            </div>
+            
+            <div id="noCookCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#noCookCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#noCookCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#noCookCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#noCookCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#noCookCarousel" data-bs-slide-to="4"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/instant chocolate oatmeal.jpg" class="img-fluid" alt="Quick Pantry Lentil Stew" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Chickpea Fiesta Salad</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) chickpeas, drained and rinsed</li>
+                                                <li>1 can (15 oz) corn, drained</li>
+                                                <li>2 tbsp olive oil</li>
+                                                <li>1 tbsp lime juice</li>
+                                                <li>½ tsp chili powder</li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a bowl, combine chickpeas, corn, oil, lime juice, and chili powder.
+
+Toss to coat, season with salt, and serve chilled.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/tuna zest salad.jpg" class="img-fluid" alt="Quick Pantry Lentil Stew" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Tuna Zest Salad</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (5 oz) tuna, drained</li>
+                                                <li>1 can (15 oz) white beans, drained and rinsed</li>
+                                                <li>2 tbsp olive oil</li>
+                                                <li>1 tbsp lemon juice</li>
+                                                <li>½ tsp dried dill (optional) </li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Combine tuna, beans, oil, lemon juice, and dill in a bowl.
+
+Season with salt, stir gently, and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/peanut butter joy sandwich.jpg" class="img-fluid" alt="Quick Pantry Lentil Stew" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Peanut Butter Joy Sandwich</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 3 min</span>
+                                            <span><i class="fas fa-users"></i> 2 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>4 slices bread</li>
+                                                <li>4 tbsp peanut butter</li>
+                                                <li>4 tbsp grape jelly</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Spread peanut butter on 2 slices of bread.
+
+Spread jelly on the other 2 slices.
+
+Assemble sandwiches, cut in half, and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/tropical fruit medley.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Tropical Fruit Medley</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) tropical fruit mix, drained</li>
+                                                <li>2 tbsp coconut flakes</li>
+                                                <li>1 tbsp honey</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a bowl, combine drained fruit and coconut flakes.
+
+Drizzle with honey, toss gently, and serve chilled.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/cheesy bean dip with crackers.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Cheesy Bean Dip with Crackers</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (16 oz) refried beans</li>
+                                                <li>4 tbsp canned cheese spread</li>
+                                                <li>Crackers for serving</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a small bowl, mix beans and cheese spread until smooth.
+
+Transfer to a serving dish and serve with crackers.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/yogurt berry bliss.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Yogurt Berry Bliss</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 cups yogurt</li>
+                                                <li>1 can (15 oz) mixed berries, drained</li>
+                                                <li>1 cup granola</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In 4 cups or bowls, layer ½ cup yogurt, ¼ cup berries, and ¼ cup granola.
+
+Repeat layers if desired and serve immediately.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/sardine zing spread.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Sardine Zing Spread</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (3.75 oz) sardines, drained</li>
+                                                <li>1 tbsp lemon juice</li>
+                                                <li>Crackers for serving</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Mash sardines with lemon juice in a bowl.
+
+Spread onto crackers and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/italian veggie mix.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Italian Veggie Mix</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) Italian-style vegetables, drained</li>
+                                                <li>2 tbsp olive oil</li>
+                                                <li>1 tsp dried basil</li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a bowl, toss drained veggies with oil and basil.
+
+Season with salt, mix gently, and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/peachy creamy dream.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Peachy Creamy Dream</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) peaches, drained</li>
+                                                <li>½ cup whipped topping</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In 4 small bowls, divide peaches.
+
+Top each with whipped topping and serve chilled.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/no bake peanut butter bars.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>No-Bake Peanut Butter Bars</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 10 min (+ chill)</span>
+                                            <span><i class="fas fa-users"></i> 12 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 cup peanut butter</li>
+                                                <li>½ cup honey</li>
+                                                <li>2 cups oats</li>
+                                                <li>¼ cup chocolate chips</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Mix peanut butter, honey, and oats in a bowl.
+
+Press mixture into a lined 8×8 pan.
+
+Sprinkle chocolate chips on top, press lightly, and refrigerate 1 hr.
+
+Cut into 12 bars and serve</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#noCookCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#noCookCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget-Friendly Section -->
+    <section class="section section-accent" id="budget-friendly">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">Budget-Friendly</h2>
+                <p class="category-description">Affordable and nutritious meals that stretch your budget without compromising on taste or nutrition.</p>
+            </div>
+            
+            <div id="budgetCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#budgetCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#budgetCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#budgetCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#budgetCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#budgetCarousel" data-bs-slide-to="4"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/chickpea tomato rice.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>One-Pot Chickpea Tomato Rice</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 20 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 cup long-grain white rice, rinsed</li>
+                                                <li>1 can (15 oz) chickpeas, drained and rinsed</li>
+                                                <li>1 can (14 oz) diced tomatoes (undrained)</li>
+                                                <li>1 tsp garlic powder</li>
+                                                <li>1 tsp onion powder</li>
+                                                <li>2 cups water or broth</li>
+                                                <li>1 tbsp oil</li>
+                                                <li>Salt and pepper to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Heat oil in a pot over medium; toast rice 1 min.
+
+Add tomatoes (with juice), chickpeas, water, and spices; bring to a boil.
+
+Cover, reduce heat to low, and simmer 15 min.
+
+Turn off heat; let sit covered 5 min. Fluff, season, and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/bean and cheese roll ups.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Bean & Cheese Roll-Ups</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 10 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>4 tortillas</li>
+                                                <li>1 can (15 oz) beans (black or pinto), drained and mashed</li>
+                                                <li>1 cup shredded cheese</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Lay tortillas flat; spread ¼ cup mashed beans on each.
+
+Sprinkle ¼ cup cheese over beans; roll up tightly.
+
+Heat a skillet over medium; grill roll-ups 2 min per side until cheese melts.
+
+Slice in half and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/spicy bean tacos.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Spicy Bean Tacos</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 15 min</span>
+                                            <span><i class="fas fa-users"></i> 4 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) black beans, drained and rinsed</li>
+                                                <li>8 small tortillas</li>
+                                                <li>1 tsp chili powder</li>
+                                                <li>¼ tsp garlic powder</li>
+                                                <li>Salt to adjust</li>
+                                                <li>1 tbsp oil (optional)</li>
+                                                <li>shredded lettuce, tomato, cheese,</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Heat oil in a pan over medium; add beans and spices, cook 2–3 min until heated.
+
+Warm tortillas in a dry skillet or microwave 20 sec.
+
+Divide bean mixture among tortillas.
+
+Top with lettuce, tomato, cheese, or salsa and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/veggie rice bowl.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Veggie Rice Bowl</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 15 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 cup rice</li>
+                                                <li>1 can (15 oz) mixed vegetables, drained</li>
+                                                <li>1 tbsp oil</li>
+                                                <li>1 tbsp garlic-chicken powder</li>
+                                                <li>Salt and pepper to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Cook rice per package (about 12 min).
+
+In a pan, heat oil; add drained veggies and soy sauce, cook 2–3 min.
+
+Serve veggies over rice, season with salt, and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/creamy tuna and potato mix.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Creamy Tuna Potato Mix</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 10 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 pack instant mashed potatoes</li>
+                                                <li>1 can (5 oz) tuna, drained</li>
+                                                <li>2 tbsp mayonnaise (Optional)</li>
+                                                <li>Salt and pepper to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Prepare potatoes per package, season, and stir in mayo.
+
+Fold in drained tuna, heat 1–2 min until warm.
+
+Serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/peanut butter banana oats.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Peanut Butter Banana Oats</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 10 min</span>
+                                            <span><i class="fas fa-users"></i> 4 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 cup oats</li>
+                                                <li>2 tbsp peanut butter</li>
+                                                <li>1 banana, sliced</li>
+                                                <li>2 cups water or milk</li>
+                                                <li>Pinch of salt</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a pot, bring water/milk to a boil; stir in oats and salt, cook 5 min.
+
+Remove from heat; stir in peanut butter.
+
+Top with banana slices and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/simple soup and bread.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Simple Soup & Bread</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 cans (10 oz each) soup (any type, can use ramen seasonings too)</li>
+                                                <li>4 slices bread or rolls</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Heat soup in a pot over medium until simmering.
+
+Pour into bowls, serve with bread or rolls on the side.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/cheesy spaghetti.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Cheesy Spaghetti</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 10 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) spaghetti (pre-cooked)</li>
+                                                <li>1 cup shredded cheese</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Empty canned spaghetti into a pot and heat over medium 3–4 min.
+
+Stir in cheese until melted and evenly coated.
+
+Serve hot.
+
+</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/beans on toast.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Beans on Toast</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 8 min</span>
+                                            <span><i class="fas fa-users"></i> 2 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) baked beans</li>
+                                                <li>4 slices bread</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Toast bread slices until golden.
+
+Heat beans in a pot 3–4 min until hot.
+
+Spoon beans over toast and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/simple sugar cookies.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Simple Sugar Cookies</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 20 min</span>
+                                            <span><i class="fas fa-users"></i> 24 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 cups flour</li>
+                                                <li>1 cup sugar</li>
+                                                <li>½ cup butter</li>
+                                                <li>1 egg</li>
+                                                <li>1 tsp vanilla extract</li>
+                                                <li>1 tsp baking soda</li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Preheat oven to 375 °F (190 °C).
+
+Cream butter and sugar; mix in egg and vanilla.
+
+Stir in flour, baking soda, and salt until dough forms.
+
+Scoop tablespoon-sized balls onto a baking sheet; bake 9–11 min until edges are lightly golden.
+
+Cool on a wire rack.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#budgetCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#budgetCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- High-Protein Section -->
+    <section class="section section-light" id="high-protein">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">High-Protein</h2>
+                <p class="category-description">Protein-rich meals to help maintain strength and energy during challenging times.</p>
+            </div>
+            
+            <div id="proteinCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#proteinCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#proteinCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#proteinCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#proteinCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#proteinCarousel" data-bs-slide-to="4"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/power lentil rice bowl.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Power Lentil Rice Bowl</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 20 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>½ cup dried lentils</li>
+                                                <li>½ cup rice</li>
+                                                <li>1 can (15 oz) spinach, drained</li>
+                                                <li>Salt and pepper to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Cook lentils and rice separately per package instructions (both ~15 min).
+
+Combine lentils, rice, and drained spinach in a bowl.
+
+Season with salt and pepper, stir, and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/chickpea spinach curry.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Chickpea Spinach Curry</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 15 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) chickpeas, drained and rinsed</li>
+                                                <li>1 can (15 oz) spinach, drained</li>
+                                                <li>1 tbsp curry powder</li>
+                                                <li>1 can (14 oz) milk (Any prefferables for milk)</li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a pot, combine chickpeas, spinach, curry powder, and coconut milk.
+
+Bring to a simmer over medium heat, cook 10 min, stirring occasionally.
+
+Season with salt and serve over rice or alone.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/black bean corn fiesta.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Black Bean Corn Fiesta</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 3 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) black beans, drained and rinsed</li>
+                                                <li>1 can (15 oz) corn, drained</li>
+                                                <li>2 tbsp olive oil</li>
+                                                <li>1 tbsp lime juice</li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a bowl, combine beans, corn, oil, and lime juice.
+
+Season with salt, toss, and serve chilled or room temperature.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/chickpea avocado mix.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Chickpea Avocado Mix</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) chickpeas, drained and rinsed</li>
+                                                <li>1 ripe avocado, peeled and pitted</li>
+                                                <li>1 tbsp lemon juice</li>
+                                                <li>Salt and pepper to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Mash chickpeas and avocado together in a bowl.
+
+Stir in lemon juice, season with salt and pepper, and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/protein peanut smoothie.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Protein Peanut Smoothie</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 2 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 tbsp peanut butter</li>
+                                                <li>1 banana</li>
+                                                <li>2 cups milk (any)</li>
+                                                <li>1 scoop of oats (any)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a blender or a bowl (if bowl smash), combine peanut butter, banana, milk, and oats.
+
+Blend or smash until smooth, pour into glasses, and serve.
+
+</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/chicken rice mix.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Chicken Rice Mix</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 15 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 cup rice (any)</li>
+                                                <li>1 can (5 oz) chicken, drained</li>
+                                                <li>1 can (15 oz) peas, drained</li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Cook rice per package (about 12 min).
+
+Stir drained chicken and peas into cooked rice, heat 2–3 min.
+
+Season with salt and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/carp snack crackers.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Carp Snack Crackers</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 7 min</span>
+                                            <span><i class="fas fa-users"></i> 5 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (3.75 oz) carps, drained</li>
+                                                <li>Crackers for serving</li>
+                                                <li>1 tsp lemon juice (optional)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Drain and mash carps with lemon juice in a bowl.
+
+Spread on crackers and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/bean and rice medley.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Bean & Rice Medley</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 15 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 cup rice (any)</li>
+                                                <li>1 can (15 oz) beans (any), drained and rinsed</li>
+                                                <li>½ tsp onion powder</li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Cook rice per package (about 12 min).
+
+Stir beans and onion powder into hot rice; heat 2 min.
+
+Season with salt and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/lentil soup with bread.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Lentil Soup with Bread</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 cans (14 oz each) lentil soup</li>
+                                                <li>4 slices bread or more</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Heat soup in a pot over medium until hot.
+
+Ladle into bowls and serve with bread.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/protein packed peanut butter balls.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Protein-Packed Peanut Butter Balls</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 10 min (+ chill)</span>
+                                            <span><i class="fas fa-users"></i> 12 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 cup peanut butter</li>
+                                                <li>½ cup oats or milk powder</li>
+                                                <li>¼ cup honey</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a bowl, mix peanut butter, oats or milk powder, honey, and oats until dough forms.
+
+Roll into 12 balls, place on a tray, and refrigerate 30 min.
+
+Serve chilled.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#proteinCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#proteinCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Child-Friendly Section -->
+    <section class="section section-accent" id="child-friendly">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">Child-Friendly</h2>
+                <p class="category-description">Fun and tasty meals that kids will love, designed to provide essential nutrition during difficult times.</p>
+            </div>
+            
+            <div id="childCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#childCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#childCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#childCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#childCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#childCarousel" data-bs-slide-to="4"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/cheesy mac delight.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Cheesy Mac Delight</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 15 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>8 oz pasta (elbow or shells)</li>
+                                                <li>1 cup canned cheese sauce</li>
+                                                <li>½ cup milk</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Cook pasta per package, drain.
+
+In the same pot, heat cheese sauce with milk until smooth.
+
+Stir in pasta, heat 1–2 min, and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/peanut butter banana bites.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Peanut Butter Banana Bites</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>4 tortillas</li>
+                                                <li>4 tbsp peanut butte</li>
+                                                <li>1 banana, sliced</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Spread 1 tbsp peanut butter on each tortilla.
+
+Place banana slices in center, roll up tightly.
+
+Slice into 1 in pieces and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/fruity yogurt parfait.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Fruity Yogurt Parfait</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 cups of yogurt<li>
+                                                <li>1 can (15 oz) fruit (any), drained</li>
+                                                <li>1 cup granola</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In 4 glasses, layer ½ cup yogurt, ¼ cup fruit, and ¼ cup granola.
+
+Repeat layers if desired and serve immediately.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/cheesy cracker snacks.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Cheesy Cracker Snacks</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 3 min</span>
+                                            <span><i class="fas fa-users"></i> 4 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>8 crackers</li>
+                                                <li>4 slices of cheese</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Place a slice of cheese on each cracker.
+
+Arrange on a plate and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/peanut butter and condensed milk bread.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Peanut Butter & Condensed Milk Classic</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 5 min</span>
+                                            <span><i class="fas fa-users"></i> 2 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>4 slices bread</li>
+                                                <li>2 tbsp peanut butter</li>
+                                                <li>1 tbsp of condensed milk</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Spread peanut butter on 2 slices, condensed on the other 2. Assemble sandwiches, cut in half, and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/fruity cream topping.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Fruity Cream Topping</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 3 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 can (15 oz) mixed fruit, drained</li>
+                                                <li>½ cup whipped topping</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Divide drained fruit among 4 bowls.
+Top each with whipped topping and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/crunchy cereal mix.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Crunchy Cereal Mix</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 2 min</span>
+                                            <span><i class="fas fa-users"></i> 2 serving</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 cups cereal (any)</li>
+                                                <li>1 cup milk</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Divide cereal into 2 bowls.
+
+Pour milk over cereal and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/buttery cheese pasta.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Buttery Cheese Pasta</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 12 min</span>
+                                            <span><i class="fas fa-users"></i> 4 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>4 small tortillas</li>
+                                                <li>½ cup tomato sauce or pizza sauce</li>
+                                                <li>1 cup shredded mozzarella (any cheese types)</li>
+                                                <li>¼ tsp dried oregano (optional)</li>
+                                                <li>Salt to taste</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Preheat oven to 375 °F (190 °C).
+
+Place tortillas on a baking sheet; spread 2 tbsp sauce on each.
+
+Sprinkle ¼ cup cheese on each, season with oregano and salt.
+
+Bake 8–10 min until cheese melts. Slice and serve.
+
+</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/easy chocolate chip cookies.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Easy Chocolate Chip Cookies</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i> 20 min</span>
+                                            <span><i class="fas fa-users"></i> 24 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>2 cups flour</li>
+                                                <li>1 cup sugar</li>
+                                                <li>½ cup butter</li>
+                                                <li>1 egg</li>
+                                                <li>1 tsp baking soda</li>
+                                                <li>½ tsp salt</li>
+                                                <li>1 cup chocolate chips</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>Preheat oven to 375 °F (190 °C).
+
+Cream butter and sugar; add egg and vanilla.
+
+Stir in flour, baking soda, and salt; fold in chocolate chips.
+
+Scoop dough onto a baking sheet; bake 9–11 min until edges are golden. Cool and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="recipe-card">
+                                    <img src="Essentials/4d1a30ca-ac62-4fdc-9c3a-06a6396334a7.jpg" class="img-fluid" style="width:100%;height:180px;object-fit:cover;">
+                                    <div class="recipe-card-header">
+                                        <h5>Honey Oat Cookie</h5>
+                                        <div class="recipe-meta">
+                                            <span><i class="fas fa-clock"></i>  Oven: 10-15 minutes</span>
+                                            <span><i class="fas fa-users"></i> 5 servings</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-card-body">
+                                        <div class="ingredients-list">
+                                            <h6><i class="fas fa-list"></i> Ingredients</h6>
+                                            <ul>
+                                                <li>1 cup rolled oats</li>
+                                                <li>1/2 cup all-purpose flour</li>
+                                                <li>1/4 cup honey</li>
+                                                <li>1/4 cup oil (like vegetable or coconut oil)</li>
+                                                <li>1/4 teaspoon salt</li>
+                                                <li>1/2 teaspoon baking soda</li>
+                                            </ul>
+                                        </div>
+                                        <div class="instructions">
+                                            <h6><i class="fas fa-utensils"></i> Instructions</h6>
+                                            <p>In a bowl, mix oats, flour, baking powder, and honey. Add melted butter and egg. Drop spoonfuls onto tray. Bake at 180C for 12 min. Cool and serve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#childCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#childCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="text-white mb-4">NutriBites</h3>
+                    <p>Providing nutritious, shelf-stable meal solutions to fight hunger and food insecurity worldwide.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="recipe.html">Recipes</a>
+                        <a href="aboutus.html">About Us</a>
+                        <a href="donate.html">Donate</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="text-white mb-4">Recipe Categories</h5>
+                    <div class="footer-links">
+                        <a href="#">Emergency Meals</a>
+                        <a href="#">No-Cook Recipes</a>
+                        <a href="#">Budget-Friendly</a>
+                        <a href="#">High-Protein</a>
+                        <a href="#">Child-Friendly</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="text-white mb-4">Contact Info</h5>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> No.113, Bobahtoo 9th St, Hlaingtharyar Tsp, Yangon</p>
+                        <p><i class="fas fa-phone"></i> +95-420105298</p>
+                        <p><i class="fas fa-envelope"></i> info@nutribites.org</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white">© 2023 NutriBites. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a class="mb-0 text-white text-decoration-none" href="references.html">References</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
